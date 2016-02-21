@@ -11,6 +11,7 @@ package cse360assign3;
 public class Calculator {
 
 	private int total;
+	private String history = "0";
 	
 	/**
 	 * Constructor for Calculator
@@ -34,6 +35,7 @@ public class Calculator {
 	public void add (int value) {
 		total += value;
 		
+		getHistory(" + " + value);
 	}
 	
 	/**
@@ -42,6 +44,8 @@ public class Calculator {
 	 */
 	public void subtract (int value) {
 		total -= value;
+		
+		getHistory(" - " + value);
 	}
 	
 	/**
@@ -50,6 +54,8 @@ public class Calculator {
 	 */
 	public void multiply (int value) {
 		total = total * value;
+		
+		getHistory(" * " + value);
 	}
 	
 	/**
@@ -61,13 +67,16 @@ public class Calculator {
 			total = 0;
 		else
 			total = total/value;
+		
+		getHistory(" / " + value);
 	}
 	
 	/**
 	 * Get calculation history
 	 * @return string with past calculations
 	 */
-	public String getHistory () {
-		return "";
+	public String getHistory (String newInfo) {
+		history += newInfo;
+		return history;
 	}
 }
